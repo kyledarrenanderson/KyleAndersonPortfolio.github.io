@@ -203,7 +203,7 @@ input:checked + .slider .moon-icon {
 }
 
 .contentBoxes {
-    margin: 20px 50px;
+    margin: 20px 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columns by default */
     grid-template-rows: repeat(2, auto); /* 2 rows by default */

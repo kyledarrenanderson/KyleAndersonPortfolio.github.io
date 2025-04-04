@@ -30,6 +30,34 @@ body {
     transition: background-color var(--transitionSpeed) ease, color var(--transitionSpeed) ease, border-color var(--transitionSpeed) ease;
 }
 
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .navbar {
+        font-size: 20px;
+    }
+
+    .navbar a {
+        padding: 10px 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding-top: 120px;
+    }
+
+    .navbar {
+        font-size: 18px;
+    }
+
+    .navbar a {
+        padding: 8px 12px;
+    }
+}
+
 h1 {
     color: var(--mainText);
 }
@@ -52,6 +80,7 @@ p {
     justify-content: flex-start;
     align-items: center;
     transition: background-color var(--transitionSpeed) ease;
+    flex-wrap: wrap;
 }
 
 .navbar a {
@@ -61,6 +90,7 @@ p {
     color: var(--navbarText);
     text-align: center;
     padding: 12px 24px 12px 12px;
+    height: 100%;
     text-decoration: none;
     border-right: 3px solid var(--highlight);
     border-bottom-right-radius: 30px;
@@ -68,6 +98,7 @@ p {
     font-size: 24px;
     background-color: var(--secondary);
     transition: color var(--transitionSpeed) ease, background-color var(--transitionSpeed) ease, border-color var(--transitionSpeed) ease;
+    white-space: nowrap;
 }
 
 .navbar a:not(:first-child) {
@@ -83,6 +114,8 @@ p {
 .theme-toggle {
     margin-left: auto;
     padding-right: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .switch {
@@ -172,9 +205,8 @@ input:checked + .slider .moon-icon {
 .contentBoxes {
     margin: 20px 50px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 25px;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns by default */
+    grid-template-rows: repeat(2, auto); /* 2 rows by default */
     background-color: var(--contentBackground);
     padding: 20px;
     border-radius: 25px;
@@ -188,17 +220,34 @@ input:checked + .slider .moon-icon {
     border: 3px solid var(--highlight);
     border-radius: 25px;
     transition: background-color var(--transitionSpeed) ease, border-color var(--transitionSpeed) ease;
+    margin: 30px;
 }
 
-.content{
+.content {
     background-color: var(--tertiary);
     border-radius: 7px;
     transition: background-color var(--transitionSpeed) ease;
 }
 
+/* Media query for screen widths below 768px */
+@media (max-width: 825px) {
+    .contentBoxes {
+        grid-template-columns: 1fr; /* Switch to 1 column */
+        grid-template-rows: auto; /* Adjust rows automatically */
+    }
+}
+
+/* Media query for screen widths below 480px */
+@media (max-width: 480px) {
+    .contentBoxes {
+        grid-template-columns: 1fr; /* Still 1 column */
+        grid-template-rows: auto; /* Adjust rows automatically */
+    }
+}
+
 .pageTitle{
     color: var(--mainText);
-    margin-top: 60px;
+    margin-top: 75px;
     padding: 20px 50px;
     background-color: var(--contentBackground);
     margin-left: auto;

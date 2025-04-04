@@ -1,10 +1,37 @@
+:root {
+    --transitionSpeed : 1.5s;
+}
+
+body.lightMode {
+    --mainText: #0f0f0f;
+    --background: #d6d6d6;
+    --secondary: #3c7bc5;
+    --tertiary: #a8c8e8;
+    --contentBackground: #7ab7c5;
+    --highlight: #1c2541;
+    --navbarText: #ffffff;
+    --altNavbarText: #5bc0be;
+}
+
+body.darkMode {
+    --mainText: #e0e0e0;
+    --background: #26292d;
+    --secondary: #1f3d6f;
+    --tertiary: #3a4d75;
+    --contentBackground: #2e4f6e;
+    --highlight: #3e56af;
+    --navbarText: #ffffff;
+    --altNavbarText: #9cdbdb;
+}
+
 body {
-    background-color: #d6d6d6;
-    color: #0f0f0f
+    background-color: var(--background);
+    color: var(--mainText);
+    transition: background-color var(--transitionSpeed) ease, color var(--transitionSpeed) ease, border-color var(--transitionSpeed) ease;
 }
 
 h1 {
-
+    color: var(--mainText);
 }
 
 p {
@@ -17,25 +44,30 @@ p {
     left: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #254e7e;
+    background-color: var(--secondary);
     position: fixed;
     top: 0;
     width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: background-color var(--transitionSpeed) ease;
 }
 
 .navbar a {
     position: relative;
     float: left;
     display: block;
-    color: white;
+    color: var(--navbarText);
     text-align: center;
     padding: 12px 24px 12px 12px;
     text-decoration: none;
-    border-right: 3px solid #1c2541;
+    border-right: 3px solid var(--highlight);
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
     font-size: 24px;
-    background-color: #254e7e;
+    background-color: var(--secondary);
+    transition: color var(--transitionSpeed) ease, background-color var(--transitionSpeed) ease, border-color var(--transitionSpeed) ease;
 }
 
 .navbar a:not(:first-child) {
@@ -44,6 +76,135 @@ p {
 }
 
 .navbar a:hover {
-    color: #5bc0be;
-    background-color: #1c2541;
+    color: var(--altNavbarText);
+    background-color: var(--highlight);
+}
+
+.theme-toggle {
+    margin-left: auto;
+    padding-right: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+.sun-icon,
+.moon-icon {
+    position: absolute;
+    font-size: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity var(--transitionSpeed) ease;
+}
+
+.sun-icon.visible,
+.moon-icon.visible {
+    opacity: 1;
+}
+
+
+.sun-icon.fade-out,
+.moon-icon.fade-out {
+    opacity: 0;
+    transition: none;
+}
+
+.sun-icon {
+    right: 4px;
+    opacity: 1;
+}
+
+.moon-icon {
+    left: 4px;
+    opacity: 0;
+}
+
+input:checked + .slider {
+    background-color: var(--background);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+input:checked + .slider .sun-icon {
+    opacity: 0;
+}
+
+input:checked + .slider .moon-icon {
+    opacity: 1;
+}
+
+.contentBoxes {
+    margin: 20px 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 25px;
+    background-color: var(--contentBackground);
+    padding: 20px;
+    border-radius: 25px;
+    transition: background-color var(--transitionSpeed) ease;
+}
+
+.contentBox {
+    background-color: var(--secondary);
+    padding: 20px;
+    text-align: center;
+    border: 3px solid var(--highlight);
+    border-radius: 25px;
+    transition: background-color var(--transitionSpeed) ease, border-color var(--transitionSpeed) ease;
+}
+
+.content{
+    background-color: var(--tertiary);
+    border-radius: 7px;
+    transition: background-color var(--transitionSpeed) ease;
+}
+
+.pageTitle{
+    color: var(--mainText);
+    margin-top: 60px;
+    padding: 20px 50px;
+    background-color: var(--contentBackground);
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    text-align: center;
+    border-radius: 25px;
+    border: 3px solid var(--highlight) ;
 }

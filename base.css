@@ -1,0 +1,49 @@
+body {
+    background-color: #d6d6d6;
+    color: #0f0f0f
+}
+
+h1 {
+
+}
+
+p {
+
+}
+
+.navbar {
+    font-family: "Roboto Slab", serif;
+    list-style-type: none;
+    left: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #254e7e;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar a {
+    position: relative;
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 24px 12px 12px;
+    text-decoration: none;
+    border-right: 3px solid #1c2541;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    font-size: 24px;
+    background-color: #254e7e;
+}
+
+.navbar a:not(:first-child) {
+    margin-left: -22px;
+    padding-left: 30px;
+}
+
+.navbar a:hover {
+    color: #5bc0be;
+    background-color: #1c2541;
+}

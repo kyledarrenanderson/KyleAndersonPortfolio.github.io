@@ -48,3 +48,12 @@ toggleSwitch.addEventListener("change", function () {
         moonIcon.classList.add('fade-out');
     }
 });
+
+function adjustBodyPadding() {
+    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+    document.body.style.paddingTop = navbarHeight + 'px';
+}
+
+// Run on page load and window resize
+window.addEventListener('load', adjustBodyPadding);
+window.addEventListener('resize', adjustBodyPadding);

@@ -1,5 +1,6 @@
 :root {
     --transitionSpeed : 1.5s;
+    font-family: "Roboto Slab", serif;
 }
 
 body.lightMode {
@@ -30,7 +31,7 @@ body {
     font-family: "Roboto Slab", serif;
     background-color: var(--background);
     color: var(--mainText);
-    transition: background-color var(--transitionSpeed) ease;
+    transition: background-color var(--transitionSpeed) ease, padding-top 1.5s ease;
 }
 
 @media screen and (max-width: 768px) {
@@ -74,8 +75,9 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    transition: background-color var(--transitionSpeed) ease;
+    transition: background-color var(--transitionSpeed) ease, transform 0.5s ease-out;
     flex-wrap: wrap;
+    transform: translateY(-100%);
 }
 
 .navbar a {
@@ -94,6 +96,26 @@ body {
     background-color: var(--navbar);
     transition: background-color var(--transitionSpeed) ease;;
     white-space: nowrap;
+}
+
+.active {
+    background-color: var(--highlight);
+}
+
+.navbar a:nth-child(1) {
+    z-index: 1000;
+}
+
+.navbar a:nth-child(2) {
+    z-index: 999;
+}
+
+.navbar a:nth-child(3) {
+    z-index: 998;
+}
+
+.navbar a:nth-child(4) {
+    z-index: 997;
 }
 
 .navbar a:not(:first-child) {
@@ -197,6 +219,19 @@ input:checked + .slider .moon-icon {
     opacity: 1;
 }
 
+.navbar-slide-in {
+    transform: translateY(0);
+}
+
+.navbar.navbar-slide-in {
+    transform: translateY(0);
+}
+
+.navbar a.active {
+    background-color: var(--highlight);
+    color: var(--altNavbarText);
+}
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -246,7 +281,7 @@ h1 {
 }
 
 .section-content {
-    padding: 1rem 0;
+    padding: 0;
 }
 
 .skills-container {

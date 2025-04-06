@@ -54,6 +54,21 @@ function adjustBodyPadding() {
     document.body.style.paddingTop = navbarHeight + 'px';
 }
 
-// Run on page load and window resize
 window.addEventListener('load', adjustBodyPadding);
 window.addEventListener('resize', adjustBodyPadding);
+
+window.addEventListener('load', function () {
+    document.querySelector('.navbar').classList.add('navbar-slide-in');
+});
+
+window.addEventListener('load', function () {
+    const navbarLinks = document.querySelectorAll('.navbar a');
+
+    const currentPage = window.location.pathname;
+
+    navbarLinks.forEach(link => {
+        if (link.href.includes(currentPage)) {
+            link.classList.add('active');
+        }
+    });
+});

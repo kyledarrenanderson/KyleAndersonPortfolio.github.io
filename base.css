@@ -97,6 +97,7 @@ body {
     background-color: var(--navbar);
     transition: background-color var(--transitionSpeed) ease, transform var(--transitionSpeed) ease;
     white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
 }
 
 .active {
@@ -226,14 +227,16 @@ input:checked + .slider .moon-icon {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 75%;
     margin: 0 auto;
     padding: 2rem;
+    padding-bottom: 6rem;
 }
 
 header {
+    max-width: 60%;
     text-align: center;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem;
     padding: 2rem 0;
     background-color: var(--tertiary);
     color: var(--navbarText);
@@ -337,6 +340,147 @@ h1 {
     transform: translateY(-5px);
 }
 
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.project-row {
+    display: flex;
+    background-color: var(--contentBackground);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+}
+
+.project-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.project-media,
+.project-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.project-media {
+    background-color: var(--highlight);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-media img,
+.project-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.project-info {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 1.8rem;
+    color: var(--tertiary);
+    margin-bottom: 1rem;
+}
+
+.project-description {
+    color: var(--mainText);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.project-features {
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.feature-item {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.feature-item:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--secondary);
+}
+
+.project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.tech-tag {
+    background-color: var(--highlight);
+    color: var(--tertiary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.project-link {
+    display: inline-block;
+    background-color: var(--secondary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.project-link:hover {
+    background-color: var(--tertiary);
+}
+
+@media (max-width: 900px) {
+    .project-row,
+    .project-row:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .project-media {
+        height: 300px;
+        position: relative;
+    }
+
+    .project-media img,
+    .project-media video {
+        position: absolute;
+    }
+
+    .project-info {
+        padding: 2rem;
+    }
+}
+
 .footer {
     background-color: var(--navbar);  /* Matches navbar color */
     color: var(--navbarText);  /* Use navbar text color */
@@ -411,7 +555,6 @@ footer a:hover {
     color: var(--highlight);
 }
 
-/* Ensures the footer stays at the bottom of the page */
 body {
     position: relative;
     min-height: 100vh;

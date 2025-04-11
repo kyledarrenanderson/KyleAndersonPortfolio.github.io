@@ -76,3 +76,65 @@ window.addEventListener('load', function () {
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.carousel-container');
+
+    carousels.forEach(carousel => {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(n) {
+            // Handle edge cases
+            if (slides.length === 0) return;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+                resetInterval();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+                resetInterval();
+            });
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                resetInterval();
+            });
+        });
+
+        function startSlideshow() {
+            if (slides.length <= 1) return;
+            slideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startSlideshow();
+        }
+
+        // Start the slideshow
+        showSlide(0);
+        startSlideshow();
+    });
+});

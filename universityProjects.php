@@ -18,7 +18,49 @@ require_once 'templates/projectData.php';
                 ?>
                 <div class="project-row">
                     <div class="project-media">
-                        <img src="<?php echo $project['image']; ?>" alt="<?php echo $project['title']; ?>">
+                        <?php
+                        switch($project['mediaType']) {
+                            case 'singleImage':
+                                echo '<img src="' . $project['image'] . '" alt="' . $project['title'] . '">';
+                                break;
+
+                            case 'gif':
+                                echo '<img src="' . $project['image'] . '" alt="' . $project['title'] . '" class="gif-media">';
+                                break;
+
+                            case 'embeddedVideo':
+                                echo $project['videoEmbed'];
+                                break;
+
+                            case 'imageCarousel':
+                                if (!empty($project['carouselImages'])) {
+                                    echo '<div class="carousel-container">';
+                                    echo '<div class="carousel-slides">';
+                                    foreach ($project['carouselImages'] as $index => $image) {
+                                        $active = ($index === 0) ? ' active' : '';
+                                        echo '<div class="carousel-slide' . $active . '">';
+                                        echo '<img src="' . $image . '" alt="' . $project['title'] . ' slide ' . ($index + 1) . '">';
+                                        echo '</div>';
+                                    }
+                                    echo '</div>';
+                                    echo '<button class="carousel-prev">❮</button>';
+                                    echo '<button class="carousel-next">❯</button>';
+                                    echo '<div class="carousel-dots">';
+                                    foreach ($project['carouselImages'] as $index => $image) {
+                                        $active = ($index === 0) ? ' active' : '';
+                                        echo '<span class="carousel-dot' . $active . '" data-slide="' . $index . '"></span>';
+                                    }
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                                break;
+
+                            default:
+                                if (!empty($project['image'])) {
+                                    echo '<img src="' . $project['image'] . '" alt="' . $project['title'] . '">';
+                                }
+                        }
+                        ?>
                     </div>
                     <div class="project-info">
                         <h2 class="project-title"><?php echo $project['title']; ?></h2>
